@@ -1,27 +1,34 @@
 # -*- coding: utf-8 -*-
-
-# Klystron Global LLC
-# Copyright (C) Klystron Global LLC
-# All Rights Reserved
-# https://www.klystronglobal.com/
-
-
 {
-    'name': "Hide Menu",
-    'summary': """
-        Restrict Menu Items from Specific Users""",
+    'name': "kg_hide_menu",
+
+    'summary': "Short (1 phrase/line) summary of the module's purpose",
+
     'description': """
-        Restrict Menu Items from Specific Users""",
-    'author': 'Klystron Global',
-    'maintainer':'Kiran K',
-    'website': "https://www.klystronglobal.com/",
-    'images': ["static/description/banner.png"],
-    'category': 'Extra Rights',
-    'version': "17.0",
-    'license': 'AGPL-3',
-    'depends': [
-        'base'
+Long description of module's purpose
+    """,
+
+    'author': "My Company",
+    'website': "https://www.yourcompany.com",
+
+    # Categories can be used to filter modules in modules listing
+    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
+    # for the full list
+    'category': 'Uncategorized',
+    'version': '17.0',
+
+    # any module necessary for this one to work correctly
+    'depends': ['base'],
+
+    # always loaded
+    'data': [
+        'security/ir.model.access.csv',
+        'views/views.xml',
+        'views/templates.xml',
     ],
-    'data': ['views/res_users.xml',
-             ],
+    # only loaded in demonstration mode
+    'demo': [
+        'demo/demo.xml',
+    ],
 }
+

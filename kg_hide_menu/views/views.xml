@@ -1,0 +1,50 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="kg_hide_menu.list">
+      <field name="name">kg_hide_menu list</field>
+      <field name="model">kg_hide_menu.kg_hide_menu</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="kg_hide_menu.action_window">
+      <field name="name">kg_hide_menu window</field>
+      <field name="res_model">kg_hide_menu.kg_hide_menu</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="kg_hide_menu.action_server">
+      <field name="name">kg_hide_menu server</field>
+      <field name="model_id" ref="model_kg_hide_menu_kg_hide_menu"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    <menuitem name="kg_hide_menu" id="kg_hide_menu.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Menu 1" id="kg_hide_menu.menu_1" parent="kg_hide_menu.menu_root"/>
+    <menuitem name="Menu 2" id="kg_hide_menu.menu_2" parent="kg_hide_menu.menu_root"/>
+    <!-- actions -->
+    <menuitem name="List" id="kg_hide_menu.menu_1_list" parent="kg_hide_menu.menu_1"
+              action="kg_hide_menu.action_window"/>
+    <!-- <menuitem name="Server to list" id="kg_hide_menu" parent="kg_hide_menu.menu_2"
+              action="kg_hide_menu.action_server"/> -->
+  </data>
+</odoo>
