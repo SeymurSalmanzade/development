@@ -1,8 +1,8 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <record model="ir.ui.view" id="book_store.list">
-      <field name="name">book_store_list</field>
+    <record model="ir.ui.view" id="book_store.list_view">
+      <field name="name">book_store_list_view</field>
       <field name="model">book_store.book_store</field>
       <field name="arch" type="xml">
         <tree>
@@ -10,21 +10,23 @@
           <field name="genre"/>
           <field name="author"/>
           <field name="value"/>
-          <field name="value2"/>
+          <field name="currency_id" column_invisible="True"/>
         </tree>
       </field>
     </record>
       
-    <record model="ir.ui.view" id="book_store.form">
-      <field name="name">book_store_form</field>
+    <record model="ir.ui.view" id="book_store.form_view">
+      <field name="name">book_store_form_view</field>
       <field name="model">book_store.book_store</field>
       <field name="arch" type="xml">
         <form>
-          <field name="name"/>
-          <field name="genre"/>
-          <field name="author"/>
-          <field name="value"/>
-          <field name="value2"/>
+            <group>
+              <field name="name"/>
+              <field name="genre"/>
+              <field name="author"/>
+              <field name="value"/>
+              <field name="currency_id"/>
+            </group>
         </form>
       </field>
     </record>
