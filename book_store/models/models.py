@@ -8,6 +8,8 @@ class book_store(models.Model):
     _description = 'book_store.book_store'
 
     name = fields.Char()
+    genre = fields.Char()
+    author = fields.Char()
     value = fields.Integer()
     value2 = fields.Float(compute="_value_pc", store=True)
     description = fields.Text()
