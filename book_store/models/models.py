@@ -26,5 +26,5 @@ class book_store(models.Model):
 class res_currency(models.Model):
     _inherit = "res.currency"
 
-    name = fieds.Char()
+    name = fields.Char()
     book_store_id = fields.One2many('book_store.book_store','currency_id')
