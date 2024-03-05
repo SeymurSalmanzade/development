@@ -15,17 +15,6 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="res_currency_inherit_form_view">
-      <field name="name">res_currency_inherit_form_view</field>
-      <field name="model">res.currency</field>
-      <field name="inherit_id" ref="base.view_currency_form"/>
-      <field name="arch" type="xml">
-        <xpath expr="//field[@name='decimal_places']" position="after">
-          <field name="book_store_id"/>
-        </xpath>
-      </field>
-    </record>
-      
     <record model="ir.ui.view" id="book_store.form_view">
       <field name="name">book_store_form_view</field>
       <field name="model">book_store.book_store</field>
@@ -33,12 +22,23 @@
         <form>
             <group>
               <field name="name"/>
-              <field name="genre" required="1" help="Select the genre of your book" placeholder="Selcet any of the options"/>
+              <field name="genre" required="1" help="Select the genre of your book" placeholder="Selcet any of the option"/>
               <field name="author"/>
               <field name="value"/>
-              <field name="currency_id"/>
+              <field name="currency_id" options="{'no_create': True, 'no_create_edit':True}"/>
             </group>
         </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="res_currency_inherit_form_view">
+      <field name="name">res_currency_inherit_form_view</field>
+      <field name="model">res.currency</field>
+      <field name="inherit_id" ref="base.view_currency_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='decimal_places']" position="after">
+          <field name="book_store_id" invisible="name != 'AZN'"/>
+        </xpath>
       </field>
     </record>
 
@@ -49,11 +49,17 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="res_currency_action_window">
+      <field name="name">res_currency_inherit_form_view_window</field>
+      <field name="res_model">res.currency</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+      
    <!-- Top menu item -->
     <menuitem name="book_store" id="book_store.menu_root"/>
     <!-- menu categories -->
-    <menuitem name="Menu 1" id="book_store.menu_1" parent="book_store.menu_root"/>
-    <menuitem name="Menu 2" id="book_store.menu_2" parent="book_store.menu_root"/>
+    <menuitem name="Menu" id="book_store.menu_1" parent="book_store.menu_root"/>
+    <menuitem name="Currencies" id="book_store.menu_2" parent="book_store.menu_root" action="res_currency_action_window"/>
     <!-- actions -->
     <menuitem name="List" id="book_store.menu_1_list" parent="book_store.menu_1"
               action="book_store.action_window"/>

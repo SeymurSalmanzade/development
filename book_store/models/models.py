@@ -11,7 +11,7 @@ class book_store(models.Model):
     name = fields.Char(default=lambda self: self.env.user.name)
     author = fields.Char()
     value = fields.Monetary(string="Value")
-    currency_id = fields.Many2one('res.currency', default=lambda self: self.env.company.currency_id, store=True)
+    currency_id = fields.Many2one('res.currency', default=lambda self: self.env.ref('base.AZN'), store=True)
     description = fields.Text()
 
     def _get_genre_list(self):
