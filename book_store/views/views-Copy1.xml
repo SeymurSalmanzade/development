@@ -14,17 +14,6 @@
         </tree>
       </field>
     </record>
-
-    <record model="ir.ui.view" id="res_currency_inherit_form_view">
-      <field name="name">res_currency_inherit_form_view</field>
-      <field name="model">res.currency</field>
-      <field name="inherit_id" ref="base.view_currency_form"/>
-      <field name="arch" type="xml">
-        <xpath expr="//field[@name='decimal_places']" position="after">
-          <field name="book_store_id"/>
-        </xpath>
-      </field>
-    </record>
       
     <record model="ir.ui.view" id="book_store.form_view">
       <field name="name">book_store_form_view</field>
