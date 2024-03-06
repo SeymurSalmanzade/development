@@ -9,8 +9,19 @@
           <field name="name"/>
           <field name="genre"/>
           <field name="author"/>
+          <field name="release_date"/>
           <field name="value"/>
           <field name="currency_id" column_invisible="True"/>
+        </tree>
+      </field>
+    </record>
+      
+    <record model="ir.ui.view" id="book_lists_list_view">
+      <field name="name">book_lists_list_view</field>
+      <field name="model">book_lists</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
         </tree>
       </field>
     </record>
@@ -21,11 +32,26 @@
       <field name="arch" type="xml">
         <form>
             <group>
-              <field name="name"/>
-              <field name="genre" required="1" help="Select the genre of your book" placeholder="Selcet any of the option"/>
+              <field name="name" help="Write a book name" required="1"/>
+              <field name="genre" required="1" help="Select the genre of your book" 
+                     widget="selection" placeholder="Selcet any of the option"/>
               <field name="author"/>
-              <field name="value"/>
-              <field name="currency_id" options="{'no_create': True, 'no_create_edit':True}"/>
+              <field name="release_date" placeholder="fields.Date.today"/>
+              <field name="premiere_night" string="Premiere Night" readonly="1"/>
+              <field name="value" required="1"/>
+              <field name="currency_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+            </group>
+        </form>
+      </field>
+    </record>
+      
+    <record model="ir.ui.view" id="book_lists_form_view">
+      <field name="name">book_lists_form_view</field>
+      <field name="model">book_lists</field>
+      <field name="arch" type="xml">
+        <form>
+            <group>
+              <field name="name"/>
             </group>
         </form>
       </field>
@@ -44,24 +70,33 @@
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="book_store.action_window">
-      <field name="name">book_store_window</field>
+      <field name="name">Movie List</field>
       <field name="res_model">book_store.book_store</field>
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="book_lists_action_window">
+      <field name="name">book_lists_window</field>
+      <field name="res_model">book_lists</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+      
     <record model="ir.actions.act_window" id="res_currency_action_window">
       <field name="name">res_currency_inherit_form_view_window</field>
       <field name="res_model">res.currency</field>
-      <field name="view_mode">kanban,tree,form</field>
+      <field name="view_mode">tree,form</field>
     </record>
       
    <!-- Top menu item -->
-    <menuitem name="book_store" id="book_store.menu_root"/>
+    <menuitem name="M&amp;B Store" id="book_store.menu_root"/>
     <!-- menu categories -->
-    <menuitem name="Menu" id="book_store.menu_1" parent="book_store.menu_root"/>
-    <menuitem name="Currencies" id="book_store.menu_2" parent="book_store.menu_root" action="res_currency_action_window"/>
+    <menuitem name="Menu" id="book_store.menu" parent="book_store.menu_root"/>
+    <menuitem name="Currencies" id="book_store.currency" parent="book_store.menu_root" action="res_currency_action_window"/>
     <!-- actions -->
-    <menuitem name="List" id="book_store.menu_1_list" parent="book_store.menu_1"
+    <menuitem name="Movies List" id="book_store.movie_list" parent="book_store.menu"
               action="book_store.action_window"/>
+    <menuitem name="Book List" id="book_store.book_list" parent="book_store.menu"
+              action="book_lists_action_window"/>
+
   </data>
 </odoo>
