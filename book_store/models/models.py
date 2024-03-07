@@ -28,7 +28,6 @@ class book_store(models.Model):
     description = fields.Text(copy=False, translate=True, help='Write some words if you want')
 
 
-
 class res_currency(models.Model):
     _inherit = 'res.currency'
 
