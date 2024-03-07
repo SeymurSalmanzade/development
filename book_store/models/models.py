@@ -38,3 +38,7 @@ class book_lists(models.Model):
     _description = 'This is the lists of books'
 
     name = fields.Char()
+    name = fields.Char()
+    name = fields.Char()
+    name = fields.Char()
+    name = fields.Char()

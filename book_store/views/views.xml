@@ -11,7 +11,7 @@
           <field name="author"/>
           <field name="release_date"/>
           <field name="value"/>
-          <field name="currency_id" column_invisible="1"/>
+          <field name="currency_id" optional="hide"/>
         </tree>
       </field>
     </record>
@@ -94,12 +94,13 @@
    <!-- Top menu item -->
     <menuitem name="M&amp;B Store" id="book_store.menu_root"/>
     <!-- menu categories -->
-        <menuitem name="Menu" id="book_store.menu" parent="book_store.menu_root"/>
-        <menuitem name="Currencies" id="book_store.currency" parent="book_store.menu_root" action="res_currency_action_window"/>
+    <menuitem name="Menu" id="book_store.menu" parent="book_store.menu_root"/>
+    <menuitem name="Currencies" id="book_store.currency" parent="book_store.menu_root" action="res_currency_action_window"/>
     <!-- actions -->
-    <menuitem name="Movies List" id="book_store.movie_list" parent="book_store.menu"
-              action="book_store.action_window"/>
-    <menuitem name="Book List" id="book_store.menu_1_list" parent="book_store.menu_1"
+    <menuitem name="Book List" id="book_store.book_list" parent="book_store.menu"
               action="book_lists_action_window"/>
+    <menuitem name="Movie List" id="book_store.movie_list" parent="book_store.menu"
+              action="book_store.action_window"/>
+        
   </data>
 </odoo>
