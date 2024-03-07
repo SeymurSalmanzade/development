@@ -98,8 +98,6 @@
     <menuitem name="Currencies" id="book_store.currency" parent="book_store.menu_root" action="res_currency_action_window"/>
     <!-- actions -->
     <menuitem name="Book List" id="book_store.book_list" parent="book_store.menu"
-              action="book_lists_action_window"/>
-    <menuitem name="Movie List" id="book_store.movie_list" parent="book_store.menu"
               action="book_store.action_window"/>
         
   </data>
