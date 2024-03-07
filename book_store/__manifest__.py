@@ -2,7 +2,7 @@
 {
     'name': "book_store",
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
+    'summary': "selling books and movies",
 
     'description': """
 Long description of module's purpose
