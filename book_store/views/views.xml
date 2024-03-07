@@ -16,15 +16,6 @@
       </field>
     </record>
       
-    <record model="ir.ui.view" id="book_lists_list_view">
-      <field name="name">book_lists_list_view</field>
-      <field name="model">book_lists</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-        </tree>
-      </field>
-    </record>
 
     <record model="ir.ui.view" id="book_store.form_view">
       <field name="name">book_store_form_view</field>
@@ -47,17 +38,6 @@
       </field>
     </record>
       
-    <record model="ir.ui.view" id="book_lists_form_view">
-      <field name="name">book_lists_form_view</field>
-      <field name="model">book_lists</field>
-      <field name="arch" type="xml">
-        <form>
-            <group>
-              <field name="name"/>
-            </group>
-        </form>
-      </field>
-    </record>
 
     <record model="ir.ui.view" id="res_currency_inherit_form_view">
       <field name="name">res_currency_inherit_form_view</field>
@@ -77,11 +57,6 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.actions.act_window" id="book_lists_action_window">
-      <field name="name">book_lists_window</field>
-      <field name="res_model">book_lists</field>
-      <field name="view_mode">tree,form</field>
-    </record>
       
     <record model="ir.actions.act_window" id="res_currency_action_window">
       <field name="name">res_currency_inherit_form_view_window</field>
@@ -97,8 +72,6 @@
     <!-- actions -->
     <menuitem name="Movies List" id="book_store.movie_list" parent="book_store.menu"
               action="book_store.action_window"/>
-    <menuitem name="Book List" id="book_store.book_list" parent="book_store.menu"
-              action="book_lists_action_window"/>
 
   </data>
 </odoo>
