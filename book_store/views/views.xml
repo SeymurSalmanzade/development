@@ -11,7 +11,7 @@
           <field name="author"/>
           <field name="release_date"/>
           <field name="value"/>
-          <field name="currency_id" optional="hide"/>
+          <field name="currency_id" optional="hide" widget="many2one"/>
         </tree>
       </field>
     </record>

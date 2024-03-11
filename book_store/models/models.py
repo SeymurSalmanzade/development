@@ -25,7 +25,7 @@ class book_store(models.Model):
     premiere_night = fields.Datetime(copy=False, default=fields.Datetime.now)
     value = fields.Monetary(string="Value", copy=False)
     currency_id = fields.Many2one('res.currency', default=lambda self: self.env.ref('base.AZN'), store=True, copy=False)
-    description = fields.Text(copy=False, translate=True, help='Write some words if you want')
+    description = fields.Text(copy=False, translate=True, help='Write some words for selling if you want')
 
 
 class res_currency(models.Model):
