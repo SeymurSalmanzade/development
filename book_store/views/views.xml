@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
+    <!-- book_list_list_view -->
     <record model="ir.ui.view" id="book_store.list_view">
       <field name="name">book_store_list_view</field>
       <field name="model">book_store.book_store</field>
@@ -15,7 +15,8 @@
         </tree>
       </field>
     </record>
-      
+
+    <!-- book_list_form_view -->
     <record model="ir.ui.view" id="book_store.form_view">
       <field name="name">book_store_form_view</field>
       <field name="model">book_store.book_store</field>
@@ -37,32 +38,98 @@
       </field>
     </record>
       
-
+    <!-- res_currency_inherit_form_view -->
     <record model="ir.ui.view" id="res_currency_inherit_form_view">
       <field name="name">res_currency_inherit_form_view</field>
       <field name="model">res.currency</field>
       <field name="inherit_id" ref="base.view_currency_form"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='decimal_places']" position="after">
-          <field name="book_store_id" invisible="name != 'AZN'"/>
+          <field name="book_lists_id" invisible="name != 'AZN'"/>
+        </xpath>
+        <xpath expr="//field[@name='book_lists_id']" position="after">
+          <field name="movie_lists_id"/>
         </xpath>
       </field>
     </record>
 
-      
-    <record model="ir.ui.view" id="book_lists_list_view">
-      <field name="name">book_lists_list_view</field>
-      <field name="model">book_lists</field>
+    <!-- movie_list_list_view -->
+    <record model="ir.ui.view" id="movie_list_list_view">
+      <field name="name">movie_list_list_view</field>
+      <field name="model">movie_list</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="category"/>
+          <field name="author"/>
+          <field name="release_date"/>
+          <field name="value"/>
+          <field name="currency_id" optional="hide" widget="many2one"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- movie_list_form_view -->
+    <record model="ir.ui.view" id="movie_list_form_view">
+      <field name="name">movie_list_form_view</field>
+      <field name="model">movie_list</field>
+      <field name="arch" type="xml">
+        <form>
+            <group>
+              <field name="name" help="Write a movie name" required="1"/>
+              <field name="is_new" help="Click or not if it is true or false :)"/>
+              <field name="category" required="1" help="Select at least one category of your movie" 
+                     widget="selection" placeholder="Selcet any of the option"/>
+              <field name="author"/>
+              <field name="release_date" placeholder="fields.Date.today"/>
+              <field name="premiere_night" string="Premiere Night" readonly="1"/>
+              <field name="value" required="1"/>
+              <field name="currency_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+              <field name="description"/>          
+            </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- genre_list_list_view -->
+    <!-- <record model="ir.ui.view" id="genre_list_list_view">
+      <field name="name">genre_list_list_view</field>
+      <field name="model">genre_list</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
         </tree>
       </field>
-    </record>
+    </record> -->
 
-    <record model="ir.ui.view" id="book_lists_form_view">
-      <field name="name">book_lists_form_view</field>
-      <field name="model">book_lists</field>
+    <!-- genre_list_form_view -->
+    <!-- <record model="ir.ui.view" id="genre_list_form_view">
+      <field name="name">genre_list_form_view</field>
+      <field name="model">genre_list</field>
+      <field name="arch" type="xml">
+        <form>
+            <group>
+              <field name="name"/>  
+            </group>
+        </form>
+      </field>
+    </record> -->
+
+    <!-- category_list_list_view -->
+    <!-- <record model="ir.ui.view" id="category_list_list_view">
+      <field name="name">category_list_list_view</field>
+      <field name="model">category_list</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record> -->
+
+    <!-- category_list_form_view -->
+    <!-- <record model="ir.ui.view" id="category_list_form_view">
+      <field name="name">category_list_form_view</field>
+      <field name="model">category_list</field>
       <field name="arch" type="xml">
         <form>
             <group>
@@ -70,35 +137,57 @@
             </group>
         </form>
       </field>
-    </record>
+    </record> -->
+
       
-    <!-- actions opening views on models -->
+    <!-- book_store.action_window -->
     <record model="ir.actions.act_window" id="book_store.action_window">
-      <field name="name">Movie List</field>
+      <field name="name">Book List</field>
       <field name="res_model">book_store.book_store</field>
       <field name="view_mode">tree,form</field>
     </record>
 
+    <!-- res_currency_action_window -->
     <record model="ir.actions.act_window" id="res_currency_action_window">
       <field name="name">res_currency_inherit_form_view_window</field>
       <field name="res_model">res.currency</field>
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.actions.act_window" id="book_lists_action_window">
-      <field name="name">book_lists_window</field>
-      <field name="res_model">book_lists</field>
+    <!-- movie_list_action_window -->
+    <record model="ir.actions.act_window" id="movie_list_action_window">
+      <field name="name">Movie List</field>
+      <field name="res_model">movie_list</field>
       <field name="view_mode">tree,form</field>
     </record>
-      
+
+    <!-- genre_list_action_window -->
+    <!-- <record model="ir.actions.act_window" id="genre_list_action_window">
+      <field name="name">Genre List</field>
+      <field name="res_model">genre_list</field>
+      <field name="view_mode">tree,form</field>
+    </record> -->
+
+    <!-- category_list_action_window -->
+    <!-- <record model="ir.actions.act_window" id="category_list_action_window">
+      <field name="name">Category List</field>
+      <field name="res_model">category_list</field>
+      <field name="view_mode">tree,form</field>
+    </record> -->
+
    <!-- Top menu item -->
     <menuitem name="M&amp;B Store" id="book_store.menu_root"/>
     <!-- menu categories -->
     <menuitem name="Menu" id="book_store.menu" parent="book_store.menu_root"/>
-    <menuitem name="Currencies" id="book_store.currency" parent="book_store.menu_root" action="res_currency_action_window"/>
+    <menuitem name="Currencies" id="book_store.currency" parent="book_store.menu_root" action="res_currency_action_window"/>  
     <!-- actions -->
     <menuitem name="Book List" id="book_store.book_list" parent="book_store.menu"
               action="book_store.action_window"/>
-        
+    <menuitem name="Movie List" id="book_store.movie_list" parent="book_store.menu"
+              action="movie_list_action_window"/>
+    <!-- <menuitem name="Genre List" id="book_store.genre_list" parent="book_store.menu"
+              action="genre_list_action_window"/>
+    <menuitem name="Category List" id="book_store.category_list" parent="book_store.menu"
+              action="category_list_action_window"/> -->
   </data>
 </odoo>
