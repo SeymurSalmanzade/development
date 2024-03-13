@@ -7,7 +7,8 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="genre"/>
+          <field name="genres" widget="many2many_tags"/>
+          <!-- <field name="genre"/> -->
           <field name="author"/>
           <field name="release_date"/>
           <field name="value"/>
@@ -24,9 +25,10 @@
         <form>
             <group>
               <field name="name" help="Write a book name" required="1"/>
-              <field name="is_new" help="Click or not if it is true or false :)"/>
-              <field name="genre" required="1" help="Select the genre of your book" 
-                     widget="selection" placeholder="Selcet any of the option"/>
+              <field name="is_new" widget="boolean_toggle" help="Click or not if it is new or not :)"/>
+              <field name="genres" widget="many2many_tags"/>
+              <!-- <field name="genre" required="1" help="Select the genre of your book" 
+                     widget="selection" placeholder="Selcet any of the option"/> -->
               <field name="author"/>
               <field name="release_date" placeholder="fields.Date.today"/>
               <field name="premiere_night" string="Premiere Night" readonly="1"/>
@@ -59,8 +61,9 @@
       <field name="model">movie_list</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="category"/>
+          <field name="name1"/>
+          <field name="categories"/>
+          <!-- <field name="category"/> -->
           <field name="author"/>
           <field name="release_date"/>
           <field name="value"/>
@@ -76,10 +79,11 @@
       <field name="arch" type="xml">
         <form>
             <group>
-              <field name="name" help="Write a movie name" required="1"/>
-              <field name="is_new" help="Click or not if it is true or false :)"/>
-              <field name="category" required="1" help="Select at least one category of your movie" 
-                     widget="selection" placeholder="Selcet any of the option"/>
+              <field name="name1" help="Write a movie name" required="1"/>
+              <field name="name2" widget="radio" help="Click or not if it is new or not :)"/>
+              <field name="categories" widget="many2many_tags"/>
+              <!-- <field name="category" required="1" help="Select at least one category of your movie" 
+                     widget="selection" placeholder="Selcet any of the option"/> -->
               <field name="author"/>
               <field name="release_date" placeholder="fields.Date.today"/>
               <field name="premiere_night" string="Premiere Night" readonly="1"/>
@@ -92,7 +96,7 @@
     </record>
 
     <!-- genre_list_list_view -->
-    <!-- <record model="ir.ui.view" id="genre_list_list_view">
+    <record model="ir.ui.view" id="genre_list_list_view">
       <field name="name">genre_list_list_view</field>
       <field name="model">genre_list</field>
       <field name="arch" type="xml">
@@ -100,7 +104,7 @@
           <field name="name"/>
         </tree>
       </field>
-    </record> -->
+    </record>
 
     <!-- genre_list_form_view -->
     <!-- <record model="ir.ui.view" id="genre_list_form_view">
@@ -116,7 +120,7 @@
     </record> -->
 
     <!-- category_list_list_view -->
-    <!-- <record model="ir.ui.view" id="category_list_list_view">
+    <record model="ir.ui.view" id="category_list_list_view">
       <field name="name">category_list_list_view</field>
       <field name="model">category_list</field>
       <field name="arch" type="xml">
@@ -124,7 +128,7 @@
           <field name="name"/>
         </tree>
       </field>
-    </record> -->
+    </record>
 
     <!-- category_list_form_view -->
     <!-- <record model="ir.ui.view" id="category_list_form_view">
@@ -162,18 +166,18 @@
     </record>
 
     <!-- genre_list_action_window -->
-    <!-- <record model="ir.actions.act_window" id="genre_list_action_window">
+    <record model="ir.actions.act_window" id="genre_list_action_window">
       <field name="name">Genre List</field>
       <field name="res_model">genre_list</field>
       <field name="view_mode">tree,form</field>
-    </record> -->
+    </record>
 
     <!-- category_list_action_window -->
-    <!-- <record model="ir.actions.act_window" id="category_list_action_window">
+    <record model="ir.actions.act_window" id="category_list_action_window">
       <field name="name">Category List</field>
       <field name="res_model">category_list</field>
       <field name="view_mode">tree,form</field>
-    </record> -->
+    </record>
 
    <!-- Top menu item -->
     <menuitem name="M&amp;B Store" id="book_store.menu_root"/>
@@ -185,9 +189,10 @@
               action="book_store.action_window"/>
     <menuitem name="Movie List" id="book_store.movie_list" parent="book_store.menu"
               action="movie_list_action_window"/>
-    <!-- <menuitem name="Genre List" id="book_store.genre_list" parent="book_store.menu"
+    <menuitem name="Genre List" id="book_store.genre_list" parent="book_store.menu"
               action="genre_list_action_window"/>
     <menuitem name="Category List" id="book_store.category_list" parent="book_store.menu"
-              action="category_list_action_window"/> -->
+              action="category_list_action_window"/>
+      
   </data>
 </odoo>
