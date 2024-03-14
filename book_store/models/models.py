@@ -66,7 +66,7 @@ class movie_list(models.Model):
     premiere_night = fields.Datetime(copy=False, default=fields.Datetime.now)
     value = fields.Monetary(string="Value", copy=False)
     currency_id = fields.Many2one('res.currency', default=lambda self: self.env.ref('base.AZN'), store=True, copy=False)
-    description = fields.Text(copy=False, translate=True, help='Write some words for selling if you want')
+    description = fields.Html(copy=False, help='Write some words for selling if you want')
 
 
 class genre_list(models.Model):

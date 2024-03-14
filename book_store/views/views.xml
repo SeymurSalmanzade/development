@@ -91,7 +91,7 @@
               <field name="premiere_night" string="Premiere Night" readonly="1"/>
               <field name="value" required="1"/>
               <field name="currency_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
-              <field name="description" widget="char_emojis"/>          
+              <field name="description" options="{'sandboxedPreview': True}"/>          
             </group>
         </form>
       </field>
