@@ -7,12 +7,12 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="genres" widget="many2many_tags"/>
+          <field name="genres" widget="many2many_tags" options="{'color_field': 'color'}"/>
           <!-- <field name="genre"/> -->
           <field name="author"/>
           <field name="release_date"/>
           <field name="value"/>
-          <field name="currency_id" optional="hide" widget="many2one"/>
+          <field name="currency_id" optional="hide" widget="badge"/>
         </tree>
       </field>
     </record>
@@ -26,7 +26,8 @@
             <group>
               <field name="name" help="Write a book name" required="1"/>
               <field name="is_new" widget="boolean_toggle" help="Click or not if it is new or not :)"/>
-              <field name="genres" widget="many2many_tags"/>
+              <field name="genres" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True,
+                          'color_field': 'color'}"/>
               <!-- <field name="genre" required="1" help="Select the genre of your book" 
                      widget="selection" placeholder="Selcet any of the option"/> -->
               <field name="author"/>
@@ -34,7 +35,7 @@
               <field name="premiere_night" string="Premiere Night" readonly="1"/>
               <field name="value" required="1"/>
               <field name="currency_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
-              <field name="description"/>
+              <field name="description" widget="char_emojis"/>
             </group>
         </form>
       </field>
@@ -62,12 +63,12 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name1"/>
-          <field name="categories"/>
+          <field name="categories" widget="many2many_tags" options="{'color_field': 'color'}"/>
           <!-- <field name="category"/> -->
           <field name="author"/>
           <field name="release_date"/>
           <field name="value"/>
-          <field name="currency_id" optional="hide" widget="many2one"/>
+          <field name="currency_id" optional="hide" widget="badge"/>
         </tree>
       </field>
     </record>
@@ -81,7 +82,8 @@
             <group>
               <field name="name1" help="Write a movie name" required="1"/>
               <field name="name2" widget="radio" help="Click or not if it is new or not :)"/>
-              <field name="categories" widget="many2many_tags"/>
+              <field name="categories" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True,
+                          'color_field': 'color'}"/>
               <!-- <field name="category" required="1" help="Select at least one category of your movie" 
                      widget="selection" placeholder="Selcet any of the option"/> -->
               <field name="author"/>
@@ -89,7 +91,7 @@
               <field name="premiere_night" string="Premiere Night" readonly="1"/>
               <field name="value" required="1"/>
               <field name="currency_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
-              <field name="description"/>          
+              <field name="description" widget="char_emojis"/>          
             </group>
         </form>
       </field>
@@ -100,8 +102,9 @@
       <field name="name">genre_list_list_view</field>
       <field name="model">genre_list</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree editable="bottom">
           <field name="name"/>
+          <field name="color" widget="color_picker"/>
         </tree>
       </field>
     </record>
@@ -113,7 +116,8 @@
       <field name="arch" type="xml">
         <form>
             <group>
-              <field name="name"/>  
+              <field name="name"/> 
+              <field name="color" widget="color_picker"/>
             </group>
         </form>
       </field>
@@ -124,8 +128,9 @@
       <field name="name">category_list_list_view</field>
       <field name="model">category_list</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree editable="bottom" sample="1">
           <field name="name"/>
+          <field name="color" widget="color_picker"/>
         </tree>
       </field>
     </record>
@@ -138,6 +143,7 @@
         <form>
             <group>
               <field name="name"/>
+              <field name="color" widget="color_picker"/>
             </group>
         </form>
       </field>

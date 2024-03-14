@@ -74,6 +74,7 @@ class genre_list(models.Model):
     _description = 'This is the genre list'
 
     name = fields.Char()
+    color = fields.Integer()
     # fantasy = fields.Char("Fantasy")
     # thriller = fields.Char("Thriller")
     # horror = fields.Char("Horror")
@@ -87,6 +88,7 @@ class category_list(models.Model):
     _description = 'This is the category list'
 
     name = fields.Char()
+    color = fields.Integer()
     # fantasy = fields.Char("Fantasy")
     # crime = fields.Char("Crime")
     # thriller = fields.Char("Thriller")
