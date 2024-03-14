@@ -62,7 +62,7 @@
       <field name="model">movie_list</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name1"/>
+          <field name="name"/>
           <field name="categories" widget="many2many_tags" options="{'color_field': 'color'}"/>
           <!-- <field name="category"/> -->
           <field name="author"/>
@@ -79,9 +79,15 @@
       <field name="model">movie_list</field>
       <field name="arch" type="xml">
         <form>
+            <field name="image" widget="image" class="oe_avatar"/>
+            <div>
+                <h1>
+                    <field name="quality" widget="priority"/>
+                </h1>
+            </div>
             <group>
-              <field name="name1" help="Write a movie name" required="1"/>
-              <field name="name2" widget="radio" help="Click or not if it is new or not :)"/>
+              <field name="name" help="Write a movie name" required="1"/>
+              <field name="isnew" widget="radio" help="Click or not if it is new or not :)"/>
               <field name="categories" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True,
                           'color_field': 'color'}"/>
               <!-- <field name="category" required="1" help="Select at least one category of your movie" 

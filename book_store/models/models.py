@@ -59,14 +59,22 @@ class movie_list(models.Model):
     #             ('documentary','Documentary'),
     #             ('memoir','Memoir')]
 
-    name1 = fields.Char("Name",copy=False, translate=True)
-    name2 = fields.Selection([('yes','Yes'),('no','No')],"New?", required=True)
+    name = fields.Char(copy=False, translate=True)
+    isnew = fields.Selection([('yes','Yes'),('no','No')],"New?", required=True)
     author = fields.Char(copy=False, size=15)
     release_date = fields.Date("Release Date", copy=False, default=fields.Date.today)
     premiere_night = fields.Datetime(copy=False, default=fields.Datetime.now)
     value = fields.Monetary(string="Value", copy=False)
     currency_id = fields.Many2one('res.currency', default=lambda self: self.env.ref('base.AZN'), store=True, copy=False)
     description = fields.Html(copy=False, help='Write some words for selling if you want')
+    image = fields.Image()
+    quality = fields.Selection([
+        ('0','None'),
+        ('1','Very Low'),
+        ('2','Low'),
+        ('3','Normal'),
+        ('4','High'),
+        ('5','Very High')], required=True)
 
 
 class genre_list(models.Model):
